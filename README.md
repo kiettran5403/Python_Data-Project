@@ -53,7 +53,7 @@ for i in range(5):
 ```
 
 ### Results
-![Trending Top Skills for Data Analysts in the US](3_Project\Images\skill_trend.png)
+![Trending Top Skills for Data Analysts in the US](3_Project/Images/skill_trend.png)
 
 ### Insights
 - SQL remains the most consistently demanded skill throughout the year, although it shows a gradual decrease in demand.
