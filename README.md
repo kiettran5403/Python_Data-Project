@@ -80,7 +80,7 @@ plt.show()
 ```
 
 ### Results
-![Salary Distributions of Data Jobs in the US](3_Project\Images\salary_analysis.png)
+![Salary Distributions of Data Jobs in the US](3_Project/Images/salary_analysis.png)
 
 ### Insights
 - There's a significant variation in salary ranges across different job titles. Senior Data Scientist positions tend to have the highest salary potential, with up to $600K, indicating the high value placed on advanced data skills and experience in the industry.
@@ -118,7 +118,7 @@ plt.show()
 ```
 
 ### Results
-![The Highest Paid & Most In-Demand Skills for Data Analysts in the US](3_Project\Images\highest_paid.png)
+![The Highest Paid & Most In-Demand Skills for Data Analysts in the US](3_Project/Images/highest_paid.png)
 
 ### Insights
 - The top graph shows specialized technical skills like dplyr, Bitbucket, and Gitlab are associated with higher salaries, some reaching up to $200K, suggesting that advanced technical proficiency can increase earning potential.
