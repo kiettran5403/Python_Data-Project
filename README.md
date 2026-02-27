@@ -129,6 +129,7 @@ plt.show()
 
 
 ## 4. What are the most optimal skills to learn for Data Analysts?
+### Visualize Data
 ``` python
 from adjustText import adjust_text
 
