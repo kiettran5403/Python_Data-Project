@@ -128,4 +128,88 @@ plt.show()
 - There's a clear distinction between the skills that are highest paid and those that are most in-demand. Data analysts aiming to maximize their career potential should consider developing a diverse skill set that includes both high-paying specialized skills and widely demanded foundational skills.
 
 
+## 4. What are the most optimal skills to learn for Data Analysts?
+``` python
+from adjustText import adjust_text
 
+df_DA_skills_high_demand.plot(kind='scatter', x='skill_percent', y='median_salary')
+
+texts = []
+for i, txt in enumerate(df_DA_skills_high_demand.index):
+    texts.append(plt.text(df_DA_skills_high_demand['skill_percent'].iloc[i], df_DA_skills_high_demand['median_salary'].iloc[i], txt))
+
+adjust_text(texts, arrowprops=dict(arrowstyle="->", color="gray"))
+
+ax = plt.gca()
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, pos: f'${int(y/1000)}K'))
+ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, pos: f'{int(x):,}'))
+
+plt.xlabel('Percent of Data Analyst Jobs')
+plt.ylabel('Median Yearly Salary')
+plt.title(f'Most Optimal Skills for Data Analysts in the US')
+
+from matplotlib.ticker import PercentFormatter
+ax = plt.gca()
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'${int(x/1000)}K'))
+ax.xaxis.set_major_formatter(PercentFormatter(decimals=0))
+
+plt.tight_layout()
+plt.show()
+```
+
+### Results
+![Optimal Skills](3_Project/Images/optimal.png)
+
+
+## Insights
+- The skill Oracle appears to have the highest median salary of nearly $97K, despite being less common in job postings. This suggests a high value placed on specialized database skills within the data analyst profession.
+
+- More commonly required skills like Excel and SQL have a large presence in job listings but lower median salaries compared to specialized skills like Python and Tableau, which not only have higher salaries but are also moderately prevalent in job listings.
+
+- Skills such as Python, Tableau, and SQL Server are towards the higher end of the salary spectrum while also being fairly common in job listings, indicating that proficiency in these tools can lead to good opportunities in data analytics.
+
+## Visualizing Different Techonologies
+``` Python
+from adjustText import adjust_text
+
+sns.scatterplot(
+    data=df_DA_skills_tech,
+    x='skill_percent',
+    y='median_salary',
+    hue='technology'
+)
+sns.despine()
+sns.set_theme(style='ticks')
+
+texts = []
+for i, txt in enumerate(df_DA_skills_high_demand.index):
+    texts.append(plt.text(df_DA_skills_high_demand['skill_percent'].iloc[i], df_DA_skills_high_demand['median_salary'].iloc[i], txt))
+
+adjust_text(texts, arrowprops=dict(arrowstyle="->", color="gray"))
+
+ax = plt.gca()
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, pos: f'${int(y/1000)}K'))
+ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, pos: f'{int(x):,}'))
+
+plt.xlabel('Percent of Data Analyst Jobs')
+plt.ylabel('Median Yearly Salary')
+plt.title(f'Most Optimal Skills for Data Analysts in the US')
+
+from matplotlib.ticker import PercentFormatter
+ax = plt.gca()
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'${int(x/1000)}K'))
+ax.xaxis.set_major_formatter(PercentFormatter(decimals=0))
+
+plt.tight_layout()
+plt.show()
+```
+
+### Results
+![Optimal Skill 2](3_Project/Images/optimal_skills.png)
+
+### Insights
+- The scatter plot shows that most of the programming skills (colored blue) tend to cluster at higher salary levels compared to other categories, indicating that programming expertise might offer greater salary benefits within the data analytics field.
+
+- The database skills (colored orange), such as Oracle and SQL Server, are associated with some of the highest salaries among data analyst tools. This indicates a significant demand and valuation for data management and manipulation expertise in the industry.
+
+- Analyst tools (colored green), including Tableau and Power BI, are prevalent in job postings and offer competitive salaries, showing that visualization and data analysis software are crucial for current data roles. This category not only has good salaries but is also versatile across different types of data tasks.
