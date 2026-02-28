@@ -226,36 +226,37 @@ plt.show()
 
 ## Visualizing Different Techonologies
 ``` Python
-from adjustText import adjust_text
-
-sns.scatterplot(
-    data=df_DA_skills_tech,
+sns.set_theme(style='ticks')
+scatter = sns.scatterplot(
+    data=df_DA_skills_tech_high_demand,
     x='skill_percent',
     y='median_salary',
-    hue='technology'
+    hue='technology',  
+    palette='bright', 
+    legend='full'  
 )
 sns.despine()
-sns.set_theme(style='ticks')
 
+# Prepare texts for adjustText
 texts = []
 for i, txt in enumerate(df_DA_skills_high_demand.index):
-    texts.append(plt.text(df_DA_skills_high_demand['skill_percent'].iloc[i], df_DA_skills_high_demand['median_salary'].iloc[i], txt))
+    texts.append(plt.text(df_DA_skills_high_demand['skill_percent'].iloc[i], df_DA_skills_high_demand['median_salary'].iloc[i], " " + txt, va='center'))
 
-adjust_text(texts, arrowprops=dict(arrowstyle="->", color="gray"))
+# Adjust text to avoid overlap
+adjust_text(texts, arrowprops=dict(arrowstyle='->', color='gray'))
 
-ax = plt.gca()
-ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, pos: f'${int(y/1000)}K'))
-ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, pos: f'{int(x):,}'))
-
+# Set axis labels, title, and legend
 plt.xlabel('Percent of Data Analyst Jobs')
 plt.ylabel('Median Yearly Salary')
-plt.title(f'Most Optimal Skills for Data Analysts in the US')
+plt.title('Most Optimal Skills for Data Analysts in the US')
+plt.legend(title='Technology')
 
 from matplotlib.ticker import PercentFormatter
 ax = plt.gca()
-ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'${int(x/1000)}K'))
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, pos: f'${int(y/1000)}K'))
 ax.xaxis.set_major_formatter(PercentFormatter(decimals=0))
 
+# Adjust layout and display plot 
 plt.tight_layout()
 plt.show()
 ```
